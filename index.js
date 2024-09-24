@@ -67,6 +67,7 @@ app.get('/api/persons', (request, response) => {
       })
 })
 
+// TODO Ex. 3.18
 app.get('/api/persons/:id', (request, response) => {
     const id = request.params.id
     const person = persons.find(person => person.id === id)
@@ -78,6 +79,15 @@ app.get('/api/persons/:id', (request, response) => {
     }
 })
 
+/* TODO Ex. 3.17
+If the user tries to create a new phonebook entry for a person whose name is already in the phonebook, the frontend will try to update the phone number of the existing entry by making an HTTP PUT request to the entry's unique URL.
+
+Modify the backend to support this request.
+
+Verify that the frontend works after making your changes.
+*/
+
+// TODO Ex. 3.14
 app.post('/api/persons', (request, response) => {
     const body = request.body
 
@@ -97,17 +107,21 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
-    const person = {
-        id: generateId(),
+    const person = new Person({
         name: body.name,
         number: body.number
-    }
+    })
 
-    persons = persons.concat(person)
+    //persons = persons.concat(person)
 
-    response.json(person)
+    person.save().then(savedPerson => {
+        response.json(savedPerson)
+    })
+
+    //response.json(person)
 })
 
+// TODO Ex. 3.15
 app.delete('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     console.log('id to delete:', id)
