@@ -24,7 +24,6 @@ const url =
     `mongodb+srv://fullstack:${password}@cluster0.ny2lv.mongodb.net/phonebookApp?retryWrites=true&w=majority&appName=Cluster0`
 
 mongoose.set('strictQuery', false)
-
 mongoose.connect(url)
 
 const personSchema = new mongoose.Schema({
