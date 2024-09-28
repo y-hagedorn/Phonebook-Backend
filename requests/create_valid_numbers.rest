@@ -1,0 +1,17 @@
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Mary Kenneth Keller",
+    "number": "09-1234556"
+}
+
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Mary Kenneth Keller",
+    "number": "040-22334455"
+}
